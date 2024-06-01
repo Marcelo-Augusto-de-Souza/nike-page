@@ -12,14 +12,20 @@ export const shoes = [
     {
         thumbnail: thumbnailShoe1,
         bigShoe: bigShoe1,
+        name: "Nike Air Jordan-20",
+        price: "$205.30",
     },
     {
         thumbnail: thumbnailShoe2,
         bigShoe: bigShoe2,
+        name: "Nike Air Jordan-50",
+        price: "$220.20",
     },
     {
         thumbnail: thumbnailShoe3,
         bigShoe: bigShoe3,
+        name: "Nike Air Jordan-80",
+        price: "$218.50",
     },
 ];
 

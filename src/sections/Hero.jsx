@@ -1,14 +1,20 @@
-import { useState } from "react";
-
+import { Fragment, useState } from "react";
 import { shoes, statistics } from "../constants";
 import { Button, ShoeCard } from "../components";
 import { bigShoe1 } from "../assets/images";
 import { arrowRight } from "../assets/icons";
+import Modal from "../components/Modal";
+
 
 const Hero = () => {
+  const modalShow = 5;
+  const [nameShoe, setNameShoe] = useState("Nike Air Jordan-20")
+  const [price, setPrice] = useState("$205.30")
+  const [showModal, setShowModal] = useState(false);
   const [bigShoeImg, setBigShoeImg] = useState(bigShoe1);
-  const hello = (bigShoe) => {
 
+  const hello = () => {
+    
   }
 
   return (
@@ -37,6 +43,7 @@ const Hero = () => {
 
         <Button label='Shop now' iconURL={arrowRight} />
 
+
         <div className='flex justify-start items-start flex-wrap w-full mt-20 gap-16'>
           {statistics.map((stat, index) => (
             <div key={index}>
@@ -50,16 +57,16 @@ const Hero = () => {
       </div>
 
       <div className='relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-hero bg-cover bg-center'>
-        <button className="cursor-pointer" onClick={hello(bigShoeImg)}>
-          <img
+        
+        <img
             src={bigShoeImg}
             alt='shoe colletion'
             width={610}
             height={502}
             className='object-contain relative z-10 cursor-pointer'
-            
-          />
-        </button>
+            onClick={()=>setShowModal(true)}
+        />
+        
         
 
         <div className='flex sm:gap-6 gap-4 absolute -bottom-[5%] sm:left-[10%] max-sm:px-6'>
@@ -69,11 +76,19 @@ const Hero = () => {
                 index={index}
                 imgURL={image}
                 changeBigShoeImage={(shoe) => setBigShoeImg(shoe)}
+                changeName={(nameN) => setNameShoe(nameN)}
+                changePrice={(priceN) => setPrice(priceN)}
                 bigShoeImg={bigShoeImg}
               />
             </div>
           ))}
         </div>
+        <Modal isvisible={showModal} 
+               onClose={() => setShowModal(false)}
+               shoeImg={bigShoeImg}
+               nameShoes={nameShoe}
+               priceShoes={price}>
+        </Modal>
       </div>
     </section>
   );
